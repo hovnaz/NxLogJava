@@ -1,9 +1,10 @@
-=== Task II ===
+## Task II
 
-  The following code contains 2 Threads running once:
+The following code contains 2 Threads running once:
 
-=== Code ===
+### Code
 
+```
 public class SynchroProcessor___Task_2.SynchroProcessor {
 
     private SynchroProcessor___Task_2.Processor processor;
@@ -27,7 +28,8 @@ public class SynchroProcessor___Task_2.SynchroProcessor {
 	}
     }
 }
+```
 
-=== /Code ===
+### Code
 
-  Write modified code which ensures the processor in Executor is always initialized when process() method is executed.
+Write modified code which ensures the processor in Executor is always initialized when process() method is executed.

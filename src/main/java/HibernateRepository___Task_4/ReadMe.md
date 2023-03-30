@@ -1,16 +1,19 @@
-=== Task IV ===
+## Task IV
 
-  We have the following Hibernate model and Repository class:
+We have the following Hibernate model and Repository class:
 
-=== Code ===
+### Code
 
+```
 public enum ModuleType {
     INPUT,
     OUTPUT,
     PROCESSOR,
     EXTENSION
 }
+```
 
+```
 @MappedSuperclass
 public abstract class AbstractEntity {
 
@@ -20,7 +23,9 @@ public abstract class AbstractEntity {
 
     //getters and setters skipped for briefity.
 }
+```
 
+```
 @Entity
 public class Agent extends AbstractAclEntity {
 
@@ -43,7 +48,9 @@ public class Agent extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
 
+```
 @Entity
 public class Module extends AbstractAclEntity {
 
@@ -60,6 +67,9 @@ public class Module extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
+
+```
 
 @Entity
 public class Route extends AbstractAclEntity {
@@ -80,7 +90,9 @@ public class Route extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+ ```
 
+```
 @Entity
 public class ModuleRoute extends AbstractAclEntity {
 
@@ -95,6 +107,9 @@ public class ModuleRoute extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
+
+```
 
 public class HibernateRepository {
 
@@ -106,10 +121,12 @@ public class HibernateRepository {
      * A complete route contains at least 1 INPUT module and at least 1 OUTPUT module.
      */
     public Set<Module> getModulesIncludedInCompleteRoutes(Long agentId) {
-	//TODO Implement
+    //TODO Implement
     }
 }
+```
 
-=== /Code ===
+### Code
 
-  Implement the code in getModulesIncludedInCompleteRoutes method using either session or em. Any of Hibernate criteria API, HQL or pure SQL can be used.
+Implement the code in getModulesIncludedInCompleteRoutes method using either session or em. Any of Hibernate criteria
+API, HQL or pure SQL can be used.
