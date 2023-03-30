@@ -7,7 +7,7 @@ greater or equal result for current version.
 
     public static boolean isCurrentVersionHigherOrEqual(String agentVersion, String currentAgentVersion) {
         boolean result = false;
-        if (!VersionComparator___Task_1.VersionComparator___Task_1.ValidationUtils.isEmptyString(currentAgentVersion) && !VersionComparator___Task_1.VersionComparator___Task_1.ValidationUtils.isEmptyString(agentVersion)) {
+        if (!ValidationUtils.isEmptyString(currentAgentVersion) && !ValidationUtils.isEmptyString(agentVersion)) {
             String _currentAgentVersion = currentAgentVersion.replaceAll("\\.", "");
             String _agentVersion = agentVersion.replaceAll("\\.", "");
             result = Integer.valueOf(_currentAgentVersion) >= Integer.valueOf(_agentVersion);

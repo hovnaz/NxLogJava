@@ -3,8 +3,8 @@ package VersionComparator___Task_1;
 public class VersionComparator {
 
     public static void main(String[] args) {
-        String agentVersion = "1.2.3";
-        String currentAgentVersion = "1.2.4";
+        String agentVersion = "2.10.5";
+        String currentAgentVersion = "2.9.100";
         boolean result = isCurrentVersionHigherOrEqual(agentVersion, currentAgentVersion);
         System.out.println("Result: " + result);
     }
