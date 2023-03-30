@@ -1,8 +1,11 @@
-=== Task I ===
+# NXLog Java Hibernate test tasks
 
-  The following method compares product version in the format "<major_version>.<minor_version>.<build_number>" and gives greater or equal result for current version.
+## Task I
 
-=== Code ===
+The following method compares product version in the format "<major_version>.<minor_version>.<build_number>" and gives
+greater or equal result for current version.
+
+### Code
 
     public static boolean isCurrentVersionHigherOrEqual(String agentVersion, String currentAgentVersion) {
         boolean result = false;
@@ -15,17 +18,18 @@
         return result;
     }
 
-=== /Code ===
+### Code
 
-  Is there a problem in the code which will give incorrect result for some values, and if there is write solution which will give the correct result.
+Is there a problem in the code which will give incorrect result for some values, and if there is write solution which
+will give the correct result.
 
+## Task II
 
-=== Task II ===
+The following code contains 2 Threads running once:
 
-  The following code contains 2 Threads running once:
+### Code
 
-=== Code ===
-
+```
 public class SynchroProcessor___Task_2.SynchroProcessor {
 
     private SynchroProcessor___Task_2.Processor processor;
@@ -49,44 +53,48 @@ public class SynchroProcessor___Task_2.SynchroProcessor {
 	}
     }
 }
+```
 
-=== /Code ===
+### Code
 
-  Write modified code which ensures the processor in Executor is always initialized when process() method is executed.
+Write modified code which ensures the processor in Executor is always initialized when process() method is executed.
 
+## Task III
 
-=== Task III ===
+The following code filters elements from a collection by statuses to another collection:
 
-  The following code filters elements from a collection by statuses to another collection:
+### Code
 
-=== Code ===
-
-    final List<FilteringCollection___Task_3.AgentInfoBean> agentInfos = fetchItems();
-    List<FilteringCollection___Task_3.AgentInfoBean> filteredResults = new LinkedList<FilteringCollection___Task_3.AgentInfoBean>();
-    for (FilteringCollection___Task_3.AgentInfoBean item : agentInfos) {
-        if (states.contains(item.getStatus())) {
-            filteredResults.add(item);
-        }
+```
+final List<FilteringCollection___Task_3.AgentInfoBean> agentInfos = fetchItems();
+List<FilteringCollection___Task_3.AgentInfoBean> filteredResults = new LinkedList<FilteringCollection___Task_3.AgentInfoBean>();
+for (FilteringCollection___Task_3.AgentInfoBean item : agentInfos) {
+    if (states.contains(item.getStatus())) {
+        filteredResults.add(item);
     }
+}
+```
 
-=== /Code ===
+### Code
 
-  Rewrite this code using Java8 stream and functions API.
+Rewrite this code using Java8 stream and functions API.
 
+## Task IV
 
-=== Task IV ===
+We have the following Hibernate model and Repository class:
 
-  We have the following Hibernate model and Repository class:
+### Code
 
-=== Code ===
-
+```
 public enum ModuleType {
     INPUT,
     OUTPUT,
     PROCESSOR,
     EXTENSION
 }
+```
 
+```
 @MappedSuperclass
 public abstract class AbstractEntity {
 
@@ -96,7 +104,9 @@ public abstract class AbstractEntity {
 
     //getters and setters skipped for briefity.
 }
+```
 
+```
 @Entity
 public class Agent extends AbstractAclEntity {
 
@@ -119,7 +129,9 @@ public class Agent extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
 
+```
 @Entity
 public class Module extends AbstractAclEntity {
 
@@ -136,6 +148,9 @@ public class Module extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
+
+```
 
 @Entity
 public class Route extends AbstractAclEntity {
@@ -156,7 +171,9 @@ public class Route extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+ ```
 
+```
 @Entity
 public class ModuleRoute extends AbstractAclEntity {
 
@@ -171,6 +188,9 @@ public class ModuleRoute extends AbstractAclEntity {
 
     //getters and setters skipped for briefity.
 }
+```
+
+```
 
 public class HibernateRepository {
 
@@ -182,15 +202,18 @@ public class HibernateRepository {
      * A complete route contains at least 1 INPUT module and at least 1 OUTPUT module.
      */
     public Set<Module> getModulesIncludedInCompleteRoutes(Long agentId) {
-	//TODO Implement
+    //TODO Implement
     }
 }
+```
 
-=== /Code ===
+### Code
 
-  Implement the code in getModulesIncludedInCompleteRoutes method using either session or em. Any of Hibernate criteria API, HQL or pure SQL can be used.
+Implement the code in getModulesIncludedInCompleteRoutes method using either session or em. Any of Hibernate criteria
+API, HQL or pure SQL can be used.
 
+## Task V
 
-=== Task V ===
-
-  Let's have the above Hibernate model in Task IV and more secificly the Agent entity. We don't need globalConfig each time in Hibernate and as @Lob this can be large data. Modify the model so globalConfig is only fetched when needed, i.e. session.get(agentId, Agent.class) will return Agent without globalConfig data.
+Let's have the above Hibernate model in Task IV and more secificly the Agent entity. We don't need globalConfig each
+time in Hibernate and as @Lob this can be large data. Modify the model so globalConfig is only fetched when needed, i.e.
+session.get(agentId, Agent.class) will return Agent without globalConfig data.
