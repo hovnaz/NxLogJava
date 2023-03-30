@@ -18,26 +18,6 @@ public class Application implements Runnable {
     @Override
     public void run() {
 
-        Configuration con = new Configuration().configure();
-        con.addAnnotatedClass(Agent.class);
-        con.addAnnotatedClass(Module.class);
-        con.addAnnotatedClass(Route.class);
-        con.addAnnotatedClass(ModuleRoute.class);
-
-        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
-                .applySettings(con.getProperties());
-
-        SessionFactory st = con.buildSessionFactory(registryBuilder.build());
-
-        FakeDataGenerator.init();
-
-    }
-}
-
-
-//    @Override
-//    public void run() {
-//
 //        Configuration con = new Configuration().configure();
 //        con.addAnnotatedClass(Agent.class);
 //        con.addAnnotatedClass(Module.class);
@@ -47,22 +27,36 @@ public class Application implements Runnable {
 //        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
 //                .applySettings(con.getProperties());
 //
-//        SessionFactory sessionFactory = con.buildSessionFactory(registryBuilder.build());
-//        EntityManager entityManager = sessionFactory.createEntityManager();
-//
-//        HibernateRepository hibernateRepository = new HibernateRepository(entityManager);
-//
-//        // Replace '1L' with the actual Agent ID you want to query
-//        Long agentId = 1L;
-//        Set<Module> modules = hibernateRepository.getModulesIncludedInCompleteRoutes(agentId);
-//
-//        // Do something with the retrieved modules, e.g., print their names
-//        System.out.println(modules);
-//        for (Module module : modules) {
-//            System.out.println("Module name: " + module.getName());
-//        }
-//
-//        // Clean up resources
-//        entityManager.close();
-//        sessionFactory.close();
-//    }
+//        SessionFactory st = con.buildSessionFactory(registryBuilder.build());
+
+
+        Configuration con = new Configuration().configure();
+        con.addAnnotatedClass(Agent.class);
+        con.addAnnotatedClass(Module.class);
+        con.addAnnotatedClass(Route.class);
+        con.addAnnotatedClass(ModuleRoute.class);
+
+        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
+                .applySettings(con.getProperties());
+
+        FakeDataGenerator.init();
+
+        SessionFactory sessionFactory = con.buildSessionFactory(registryBuilder.build());
+        EntityManager entityManager = sessionFactory.createEntityManager();
+
+        HibernateRepository hibernateRepository = new HibernateRepository(entityManager);
+
+        // Replace '1L' with the actual Agent ID you want to query
+        Long agentId = 1L;
+        Set<Module> modules = hibernateRepository.getModulesIncludedInCompleteRoutes(agentId);
+
+        // Do something with the retrieved modules, e.g., print their names
+        for (Module module : modules) {
+            System.out.println("Module name: " + module.getName());
+        }
+
+        // Clean up resources
+        entityManager.close();
+        sessionFactory.close();
+    }
+}
