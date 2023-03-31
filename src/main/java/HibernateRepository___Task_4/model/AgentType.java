@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4And5.model;
+package HibernateRepository___Task_4.model;
 
 public enum AgentType {
 

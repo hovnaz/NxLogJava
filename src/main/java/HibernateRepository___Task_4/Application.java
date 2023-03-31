@@ -1,10 +1,10 @@
-package HibernateRepository___Task_4And5;
+package HibernateRepository___Task_4;
 
-import HibernateRepository___Task_4And5.entity.Agent;
-import HibernateRepository___Task_4And5.entity.Module;
-import HibernateRepository___Task_4And5.entity.ModuleRoute;
-import HibernateRepository___Task_4And5.entity.Route;
-import HibernateRepository___Task_4And5.repository.HibernateRepository;
+import HibernateRepository___Task_4.entity.Agent;
+import HibernateRepository___Task_4.entity.Module;
+import HibernateRepository___Task_4.entity.ModuleRoute;
+import HibernateRepository___Task_4.entity.Route;
+import HibernateRepository___Task_4.repository.HibernateRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

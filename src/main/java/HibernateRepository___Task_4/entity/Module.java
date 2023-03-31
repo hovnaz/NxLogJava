@@ -1,6 +1,6 @@
-package HibernateRepository___Task_4And5.entity;
+package HibernateRepository___Task_4.entity;
 
-import HibernateRepository___Task_4And5.model.ModuleType;
+import HibernateRepository___Task_4.model.ModuleType;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Column;

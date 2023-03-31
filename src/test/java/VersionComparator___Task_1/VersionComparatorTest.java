@@ -6,10 +6,10 @@ import static VersionComparator___Task_1.VersionComparator.isCurrentVersionHighe
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class VersionComparatorTest {
+public class VersionComparatorTest {
 
     @Test
-    void testIsCurrentVersionHigherOrEqual() {
+    public void testIsCurrentVersionHigherOrEqual() {
         assertTrue(isCurrentVersionHigherOrEqual("1.0.0", "1.0.0"));
         assertTrue(isCurrentVersionHigherOrEqual("1.0.0", "1.0.1"));
         assertTrue(isCurrentVersionHigherOrEqual("1.0.0", "1.1.0"));

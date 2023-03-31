@@ -1,6 +1,6 @@
-package HibernateRepository___Task_4And5.entity;
+package HibernateRepository___Task_4.entity;
 
-import HibernateRepository___Task_4And5.model.AgentType;
+import HibernateRepository___Task_4.model.AgentType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
