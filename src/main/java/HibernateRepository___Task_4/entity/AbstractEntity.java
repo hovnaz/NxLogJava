@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4;
+package HibernateRepository___Task_4.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

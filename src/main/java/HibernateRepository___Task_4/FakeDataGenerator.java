@@ -1,16 +1,27 @@
 package HibernateRepository___Task_4;
 
+import HibernateRepository___Task_4.entity.Agent;
+import HibernateRepository___Task_4.entity.Module;
+import HibernateRepository___Task_4.entity.ModuleRoute;
+import HibernateRepository___Task_4.entity.Route;
+import HibernateRepository___Task_4.model.AgentType;
+import HibernateRepository___Task_4.model.ModuleType;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.Random;
 
 public class FakeDataGenerator {
 
     private final EntityManager entityManager;
 
+    private final Random random;
+
     public FakeDataGenerator(EntityManager em) {
         this.entityManager = em;
+        this.random = new Random();
     }
 
     public Agent createFakeAgent(String name, AgentType type, String globalConfig) {
@@ -40,12 +51,11 @@ public class FakeDataGenerator {
         return route;
     }
 
-    public ModuleRoute createFakeModuleRoute(Route route, Module module) {
+    public void createFakeModuleRoute(Route route, Module module) {
         ModuleRoute moduleRoute = new ModuleRoute();
         moduleRoute.setRoute(route);
         moduleRoute.setModule(module);
         entityManager.persist(moduleRoute);
-        return moduleRoute;
     }
 
     private static void generateAndSaveFakeData(EntityManager entityManager) {
@@ -55,12 +65,12 @@ public class FakeDataGenerator {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        Agent fakeAgent = fakeDataGenerator.createFakeAgent("Fake Agent", AgentType.API, "Fake global config");
+        Agent fakeAgent = fakeDataGenerator.createFakeAgent("Fake Agent " + fakeDataGenerator.random.nextInt(100), AgentType.values()[fakeDataGenerator.random.nextInt(AgentType.values().length)], "Fake global config " + fakeDataGenerator.random.nextInt(100));
 
-        Module inputModule = fakeDataGenerator.createFakeModule(fakeAgent, "Fake Input Module", ModuleType.INPUT);
-        Module outputModule = fakeDataGenerator.createFakeModule(fakeAgent, "Fake Output Module", ModuleType.OUTPUT);
+        Module inputModule = fakeDataGenerator.createFakeModule(fakeAgent, "Fake Input Module " + fakeDataGenerator.random.nextInt(100), ModuleType.INPUT);
+        Module outputModule = fakeDataGenerator.createFakeModule(fakeAgent, "Fake Output Module " + fakeDataGenerator.random.nextInt(100), ModuleType.OUTPUT);
 
-        Route fakeRoute = fakeDataGenerator.createFakeRoute(fakeAgent, "Fake Route", 1);
+        Route fakeRoute = fakeDataGenerator.createFakeRoute(fakeAgent, "Fake Route " + fakeDataGenerator.random.nextInt(100), fakeDataGenerator.random.nextInt(10));
 
         fakeDataGenerator.createFakeModuleRoute(fakeRoute, inputModule);
         fakeDataGenerator.createFakeModuleRoute(fakeRoute, outputModule);

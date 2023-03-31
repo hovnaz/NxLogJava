@@ -1,5 +1,10 @@
 package HibernateRepository___Task_4;
 
+import HibernateRepository___Task_4.entity.Agent;
+import HibernateRepository___Task_4.entity.Module;
+import HibernateRepository___Task_4.entity.ModuleRoute;
+import HibernateRepository___Task_4.entity.Route;
+import HibernateRepository___Task_4.repository.HibernateRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -9,7 +14,6 @@ import java.util.Set;
 
 public class Application implements Runnable {
 
-
     public static void main(String[] args) {
         Application app = new Application();
         app.run();
@@ -17,32 +21,9 @@ public class Application implements Runnable {
 
     @Override
     public void run() {
-
-//        Configuration con = new Configuration().configure();
-//        con.addAnnotatedClass(Agent.class);
-//        con.addAnnotatedClass(Module.class);
-//        con.addAnnotatedClass(Route.class);
-//        con.addAnnotatedClass(ModuleRoute.class);
-//
-//        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
-//                .applySettings(con.getProperties());
-//
-//        SessionFactory st = con.buildSessionFactory(registryBuilder.build());
-
-
-        Configuration con = new Configuration().configure();
-        con.addAnnotatedClass(Agent.class);
-        con.addAnnotatedClass(Module.class);
-        con.addAnnotatedClass(Route.class);
-        con.addAnnotatedClass(ModuleRoute.class);
-
-        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
-                .applySettings(con.getProperties());
-
-        FakeDataGenerator.init();
-
-        SessionFactory sessionFactory = con.buildSessionFactory(registryBuilder.build());
-        EntityManager entityManager = sessionFactory.createEntityManager();
+        Configuration con = configure();
+        SessionFactory sessionFactory = buildSessionFactory(con);
+        EntityManager entityManager = createEntityManager(sessionFactory);
 
         HibernateRepository hibernateRepository = new HibernateRepository(entityManager);
 
@@ -50,12 +31,38 @@ public class Application implements Runnable {
         Long agentId = 1L;
         Set<Module> modules = hibernateRepository.getModulesIncludedInCompleteRoutes(agentId);
 
-        // Do something with the retrieved modules, e.g., print their names
-        for (Module module : modules) {
-            System.out.println("Module name: " + module.getName());
-        }
+        printModuleNames(modules);
 
-        // Clean up resources
+        closeResources(entityManager, sessionFactory);
+    }
+
+    private Configuration configure() {
+        Configuration con = new Configuration().configure();
+        con.addAnnotatedClass(Agent.class);
+        con.addAnnotatedClass(Module.class);
+        con.addAnnotatedClass(Route.class);
+        con.addAnnotatedClass(ModuleRoute.class);
+        return con;
+    }
+
+    private SessionFactory buildSessionFactory(Configuration con) {
+        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder()
+                .applySettings(con.getProperties());
+
+        FakeDataGenerator.init();
+
+        return con.buildSessionFactory(registryBuilder.build());
+    }
+
+    private EntityManager createEntityManager(SessionFactory sessionFactory) {
+        return sessionFactory.createEntityManager();
+    }
+
+    private void printModuleNames(Set<Module> modules) {
+        modules.stream().map(Module::getName).forEach(System.out::println);
+    }
+
+    private void closeResources(EntityManager entityManager, SessionFactory sessionFactory) {
         entityManager.close();
         sessionFactory.close();
     }

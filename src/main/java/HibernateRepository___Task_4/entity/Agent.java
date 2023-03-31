@@ -1,13 +1,16 @@
-package HibernateRepository___Task_4;
+package HibernateRepository___Task_4.entity;
 
+import HibernateRepository___Task_4.model.AgentType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -24,6 +27,7 @@ public class Agent extends AbstractEntity {
     @Column(nullable = false, length = 31)
     @Enumerated(EnumType.STRING)
     private AgentType type;
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "global_config", length = 32671)
     @Lob
     protected String globalConfig;

@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4;
+package HibernateRepository___Task_4.entity;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
