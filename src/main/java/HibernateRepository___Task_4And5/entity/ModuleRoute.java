@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4.entity;
+package HibernateRepository___Task_4And5.entity;
 
 import org.hibernate.annotations.NaturalId;
 

@@ -1,11 +1,11 @@
-package HibernateRepository___Task_4;
+package HibernateRepository___Task_4And5;
 
-import HibernateRepository___Task_4.entity.Agent;
-import HibernateRepository___Task_4.entity.Module;
-import HibernateRepository___Task_4.entity.ModuleRoute;
-import HibernateRepository___Task_4.entity.Route;
-import HibernateRepository___Task_4.model.AgentType;
-import HibernateRepository___Task_4.model.ModuleType;
+import HibernateRepository___Task_4And5.entity.Agent;
+import HibernateRepository___Task_4And5.entity.Module;
+import HibernateRepository___Task_4And5.entity.ModuleRoute;
+import HibernateRepository___Task_4And5.entity.Route;
+import HibernateRepository___Task_4And5.model.AgentType;
+import HibernateRepository___Task_4And5.model.ModuleType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

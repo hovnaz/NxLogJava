@@ -1,7 +1,8 @@
 package HibernateRepository___Task_4.repository;
 
-import HibernateRepository___Task_4.entity.Module;
-import HibernateRepository___Task_4.model.ModuleType;
+import HibernateRepository___Task_4And5.entity.Module;
+import HibernateRepository___Task_4And5.model.ModuleType;
+import HibernateRepository___Task_4And5.repository.HibernateRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
