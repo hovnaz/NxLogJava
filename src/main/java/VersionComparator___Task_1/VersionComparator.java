@@ -10,24 +10,25 @@ public class VersionComparator {
     }
 
     public static boolean isCurrentVersionHigherOrEqual(String agentVersion, String currentAgentVersion) {
-        if (ValidationUtils.isEmptyString(currentAgentVersion) || ValidationUtils.isEmptyString(agentVersion)) {
+        if (isEmptyString(currentAgentVersion) || isEmptyString(agentVersion)) {
             return false;
         }
 
-        String[] currentAgentVersionParts = currentAgentVersion.split("\\.");
-        String[] agentVersionParts = agentVersion.split("\\.");
+        String[] currentVersionParts = currentAgentVersion.split("\\.");
+        String[] versionParts = agentVersion.split("\\.");
 
-        for (int i = 0; i < currentAgentVersionParts.length && i < agentVersionParts.length; i++) {
-            int currentPart = Integer.parseInt(currentAgentVersionParts[i]);
-            int part = Integer.parseInt(agentVersionParts[i]);
+        for (int i = 0; i < currentVersionParts.length && i < versionParts.length; i++) {
+            int currentPart = Integer.parseInt(currentVersionParts[i]);
+            int part = Integer.parseInt(versionParts[i]);
 
-            if (currentPart > part) {
-                return true;
-            } else if (currentPart < part) {
-                return false;
+            if (currentPart != part) {
+                return currentPart > part;
             }
         }
-
         return true;
+    }
+
+    public static boolean isEmptyString(String str) {
+        return str == null || str.trim().isEmpty();
     }
 }
