@@ -16,7 +16,6 @@ import java.util.Random;
 public class FakeDataGenerator {
 
     private final EntityManager entityManager;
-
     private final Random random;
 
     public FakeDataGenerator(EntityManager em) {
