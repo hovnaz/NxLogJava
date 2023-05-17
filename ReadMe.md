@@ -9,7 +9,7 @@ greater or equal result for current version.
 
     public static boolean isCurrentVersionHigherOrEqual(String agentVersion, String currentAgentVersion) {
         boolean result = false;
-        if (!VersionComparator___Task_1.VersionComparator___Task_1.ValidationUtils.isEmptyString(currentAgentVersion) && !VersionComparator___Task_1.VersionComparator___Task_1.ValidationUtils.isEmptyString(agentVersion)) {
+        if (!comparator.comparator.ValidationUtils.isEmptyString(currentAgentVersion) && !comparator.comparator.ValidationUtils.isEmptyString(agentVersion)) {
             String _currentAgentVersion = currentAgentVersion.replaceAll("\\.", "");
             String _agentVersion = agentVersion.replaceAll("\\.", "");
             result = Integer.valueOf(_currentAgentVersion) >= Integer.valueOf(_agentVersion);
@@ -30,9 +30,9 @@ The following code contains 2 Threads running once:
 ### Code
 
 ```
-public class SynchroProcessor___Task_2.SynchroProcessor {
+public class syncUtil.SynchroProcessor {
 
-    private SynchroProcessor___Task_2.Processor processor;
+    private syncUtil.Processor processor;
 
     public static void main(String[] args) {
 	Thread t1 = new Executor().start();
@@ -43,7 +43,7 @@ public class SynchroProcessor___Task_2.SynchroProcessor {
 
     private class Initializer extend Thread {
 	public void run() {
-	    processor = new SynchroProcessor___Task_2.Processor();
+	    processor = new syncUtil.Processor();
 	    processor.init();
 	}
     }
@@ -66,9 +66,9 @@ The following code filters elements from a collection by statuses to another col
 ### Code
 
 ```
-final List<FilteringCollection___Task_3.AgentInfoBean> agentInfos = fetchItems();
-List<FilteringCollection___Task_3.AgentInfoBean> filteredResults = new LinkedList<FilteringCollection___Task_3.AgentInfoBean>();
-for (FilteringCollection___Task_3.AgentInfoBean item : agentInfos) {
+final List<colectionUtil.AgentInfoBean> agentInfos = fetchItems();
+List<colectionUtil.AgentInfoBean> filteredResults = new LinkedList<colectionUtil.AgentInfoBean>();
+for (colectionUtil.AgentInfoBean item : agentInfos) {
     if (states.contains(item.getStatus())) {
         filteredResults.add(item);
     }

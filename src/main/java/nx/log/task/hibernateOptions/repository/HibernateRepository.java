@@ -1,7 +1,7 @@
-package HibernateRepository___Task_4.repository;
+package nx.log.task.hibernateOptions.repository;
 
-import HibernateRepository___Task_4.entity.Module;
-import HibernateRepository___Task_4.model.ModuleType;
+import nx.log.task.hibernateOptions.entity.Module;
+import nx.log.task.hibernateOptions.model.ModuleType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,10 +12,10 @@ import java.util.Set;
 public class HibernateRepository {
 
     @PersistenceContext
-    private final EntityManager em;
+    private final EntityManager entityManager;
 
-    public HibernateRepository(EntityManager em) {
-        this.em = em;
+    public HibernateRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     /**
@@ -38,16 +38,10 @@ public class HibernateRepository {
                 "    )" +
                 ")";
 
-        TypedQuery<Module> query = em.createQuery(hql, Module.class);
+        TypedQuery<Module> query = entityManager.createQuery(hql, Module.class);
         query.setParameter("agentId", agentId);
-        query.setParameter("inputType", ModuleType.INPUT);
-        query.setParameter("outputType", ModuleType.OUTPUT);
-
+        query.setParameter("inputType", ModuleType.INPUT.name());
+        query.setParameter("outputType", ModuleType.OUTPUT.name());
         return new HashSet<>(query.getResultList());
     }
 }
-/*
-===/Code===
-
-        Implement the code in getModulesIncludedInCompleteRoutes method using either session or em.Any of Hibernate criteria API,HQL or pure SQL can be used.
-*/

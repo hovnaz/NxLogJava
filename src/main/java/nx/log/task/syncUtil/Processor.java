@@ -1,4 +1,4 @@
-package SynchroProcessor___Task_2;
+package nx.log.task.syncUtil;
 
 public class Processor {
 

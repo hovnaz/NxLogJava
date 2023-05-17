@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4.model;
+package nx.log.task.hibernateOptions.model;
 
 public enum ModuleType {
 

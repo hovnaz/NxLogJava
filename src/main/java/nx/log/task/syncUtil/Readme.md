@@ -5,9 +5,9 @@ The following code contains 2 Threads running once:
 ### Code
 
 ```
-public class SynchroProcessor___Task_2.SynchroProcessor {
+public class syncUtil.SynchroProcessor {
 
-    private SynchroProcessor___Task_2.Processor processor;
+    private syncUtil.Processor processor;
 
     public static void main(String[] args) {
 	Thread t1 = new Executor().start();
@@ -18,7 +18,7 @@ public class SynchroProcessor___Task_2.SynchroProcessor {
 
     private class Initializer extend Thread {
 	public void run() {
-	    processor = new SynchroProcessor___Task_2.Processor();
+	    processor = new syncUtil.Processor();
 	    processor.init();
 	}
     }

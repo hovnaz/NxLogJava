@@ -1,4 +1,4 @@
-package HibernateRepository___Task_4.entity;
+package nx.log.task.hibernateOptions.entity;
 
 import org.hibernate.annotations.NaturalId;
 

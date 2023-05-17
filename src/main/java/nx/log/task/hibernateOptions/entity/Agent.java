@@ -1,6 +1,7 @@
-package HibernateRepository___Task_4.entity;
+package nx.log.task.hibernateOptions.entity;
 
-import HibernateRepository___Task_4.model.AgentType;
+import nx.log.task.hibernateOptions.model.AgentType;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -56,7 +57,12 @@ public class Agent extends AbstractEntity {
         this.type = type;
     }
 
+    //task_V
     public String getGlobalConfig() {
+        if (Hibernate.isInitialized(globalConfig)) {
+            return globalConfig;
+        }
+        Hibernate.initialize(globalConfig);
         return globalConfig;
     }
 
