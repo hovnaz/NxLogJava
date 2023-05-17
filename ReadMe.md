@@ -1,4 +1,4 @@
-# NXLog Java Hibernate test tasks
+# Java Hibernate
 
 ## Task I
 
